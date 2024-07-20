@@ -1,0 +1,41 @@
+<div class="flex h-screen w-full items-center justify-center bg-gray-100">
+  <div class="w-full max-w-lg overflow-hidden rounded-lg lg:bg-white ">
+    <div class="w-full">
+      <div class="p-8">
+        <h1 class="text-3xl font-bold text-slate-700">Login</h1>
+        <p class="mt-2 mb-5 text-base leading-tight text-gray-600">Sign in to continue to your account.</p>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <div class="relative mt-2 w-full">
+            <input type="email" id="email" formControlName="email" required
+              class="peer block w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" placeholder=" " />
+            <label for="email" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-75 transform cursor-text select-none bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-blue-600">Email:</label>
+            <div *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched"
+              class="mt-1 text-sm text-red-500">
+              Email is required.
+            </div>
+            <div *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched"
+              class="mt-1 text-sm text-red-500">
+              Enter a valid email.
+            </div>
+          </div>
+          <div class="relative mt-2 w-full">
+            <input type="password" id="password" formControlName="password" required
+              class="peer block w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" placeholder=" " />
+            <label for="password" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-75 transform cursor-text select-none bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-blue-600">Password:</label>
+            <div *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched"
+              class="mt-1 text-sm text-red-500">
+              Password is required.
+            </div>
+          </div>
+          <button type="submit" [disabled]="loginForm.invalid"
+            class="mt-4 w-full cursor-pointer rounded-lg bg-blue-600 pt-3 pb-3 text-white shadow-lg hover:bg-blue-400">
+            Login
+          </button>
+        </form>
+        <div class="mt-4 text-center">
+          <p class="text-sm text-gray-600">Don't have an account? <a routerLink="../register" class="font-bold text-blue-600 no-underline hover:text-blue-400">Register</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

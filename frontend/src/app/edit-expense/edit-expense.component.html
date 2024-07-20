@@ -1,0 +1,29 @@
+<!-- src/app/edit-expenses/edit-expenses.component.html -->
+
+<div class="expenses-container">
+  <div *ngFor="let expense of expenses" class="expense-card">
+    <h4>{{ expense.category }} - {{ expense.amount | currency }}</h4>
+    <p>Date: {{ expense.date | date }}</p>
+    <p>Description: {{ expense.description }}</p>
+    <button (click)="openEditModal(expense)">Edit</button>
+    <button (click)="onDelete(expense._id)">Delete</button>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span (click)="closeEditModal()" class="close">&times;</span>
+    <form [formGroup]="editForm" (ngSubmit)="onUpdate()">
+      <label for="date">Date:</label>
+      <input type="date" formControlName="date">
+      <label for="amount">Amount:</label>
+      <input type="text" formControlName="amount">
+      <label for="category">Category:</label>
+      <input type="text" formControlName="category">
+      <label for="description">Description:</label>
+      <input type="text" formControlName="description">
+      <button type="submit">Update</button>
+    </form>
+  </div>
+</div>

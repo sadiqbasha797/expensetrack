@@ -1,0 +1,18 @@
+/* src/app/dashboard/dashboard.component.css */
+
+.user-info {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .user-info h1 {
+    color: #333;
+  }
+  
+  .user-info p {
+    color: #666;
+  }
+  
